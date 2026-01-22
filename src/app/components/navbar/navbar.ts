@@ -10,5 +10,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.css'
 })
 export class NavbarComponent {
-  // No complex logic needed here yet
+
 }

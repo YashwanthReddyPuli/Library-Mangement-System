@@ -1,17 +1,25 @@
-<div style="padding: 30px; font-family: 'Segoe UI', sans-serif; background-color: #ffffff;">
-  <h2 style="color: #333; margin-bottom: 20px;">Master Inventory</h2>
+<div style="padding: 30px; font-family: 'Segoe UI', sans-serif;">
+  <h2 style="color: #333;">Librarian Inventory</h2>
 
-  <div style="background-color: #f0f7ff; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 1px solid #d0e3ff;">
-    <h4 style="margin-top: 0; color: #0056b3;">Add New Record</h4>
-    <input #t type="text" placeholder="Book Title" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px; width: 250px;">
-    <input #a type="text" placeholder="Author" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; margin-right: 10px; width: 200px;">
-    <button (click)="addNew(t.value, a.value); t.value=''; a.value=''" 
-            style="padding: 8px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
-      Add to System
-    </button>
+  <div style="background-color: #f0f7ff; padding: 20px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #d0e3ff;">
+    <h4 style="margin: 0 0 15px 0; color: #0056b3;">Add New Book</h4>
+    <div style="display: flex; gap: 10px;">
+      <input #t type="text" placeholder="Enter Book Title" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; flex: 2;">
+      <input #a type="text" placeholder="Enter Author" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; flex: 1;">
+      <button (click)="addNew(t.value, a.value); t.value=''; a.value=''" 
+              style="padding: 10px 25px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600;">
+        + Add to System
+      </button>
+    </div>
   </div>
 
-  <table style="width: 100%; border-collapse: collapse;">
+  <div style="margin-bottom: 20px;">
+    <label style="display: block; margin-bottom: 5px; font-size: 13px; font-weight: bold; color: #666;">SEARCH INVENTORY</label>
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Filter by title or author name..." 
+           style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box;">
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse; background: white; border: 1px solid #eee;">
     <thead>
       <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; text-align: left;">
         <th style="padding: 12px;">ID</th>
@@ -21,8 +29,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let b of books" style="border-bottom: 1px solid #eee;">
-        <td style="padding: 12px; color: #666;">{{ b.id }}</td>
+      <tr *ngFor="let b of filteredBooks" style="border-bottom: 1px solid #eee;">
+        <td style="padding: 12px; color: #777;">{{ b.id }}</td>
         <td style="padding: 12px; font-weight: 500;">{{ b.title }}</td>
         <td style="padding: 12px;">{{ b.author }}</td>
         <td style="padding: 12px;">

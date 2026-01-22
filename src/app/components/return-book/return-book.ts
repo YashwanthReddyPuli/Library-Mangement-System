@@ -18,13 +18,13 @@ export class ReturnBookComponent implements OnInit {
   }
 
   updateList() {
-    // Only show books where isAvailable is false
+    
     this.books = this.bookService.getBooks().filter(b => !b.isAvailable);
   }
 
   returnBook(id: number) {
-    this.bookService.returnBook(id); // Make book available again
-    this.updateList(); // Remove from the "Return" view
+    this.bookService.returnBook(id); 
+    this.updateList(); 
     alert('Book returned!');
   }
 }
