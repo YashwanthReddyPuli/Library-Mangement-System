@@ -1,0 +1,266 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "GTA V Lore",
+      "author": "Rockstar",
+      "genre": "Gaming",
+      "year": 2013,
+      "isAvailable": true
+    },
+    {
+      "id": 2,
+      "title": "Angular Basics",
+      "author": "Google",
+      "genre": "Technical",
+      "year": 2024,
+      "isAvailable": false
+    },
+    {
+      "id": 3,
+      "title": "Data Science Handbooks",
+      "author": "Jake VanderPlas",
+      "genre": "Education",
+      "year": 2016,
+      "isAvailable": false
+    },
+    {
+      "id": 4,
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "year": 1937,
+      "isAvailable": false
+    },
+    {
+      "id": 5,
+      "title": "Clean Code",
+      "author": "Robert C. Martin",
+      "genre": "Technical",
+      "year": 2008,
+      "isAvailable": true
+    },
+    {
+      "id": 6,
+      "title": "Cyberpunk 2077 Guide",
+      "author": "CD Projekt Red",
+      "genre": "Gaming",
+      "year": 2020,
+      "isAvailable": true
+    },
+    {
+      "id": 7,
+      "title": "Grokking Algorithms",
+      "author": "Aditya Bhargava",
+      "genre": "Technical",
+      "year": 2016,
+      "isAvailable": true
+    },
+    {
+      "id": 8,
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "genre": "Science Fiction",
+      "year": 1965,
+      "isAvailable": true
+    },
+    {
+      "id": 9,
+      "title": "Neuromancer",
+      "author": "William Gibson",
+      "genre": "Science Fiction",
+      "year": 1984,
+      "isAvailable": true
+    },
+    {
+      "id": 10,
+      "title": "Design Patterns",
+      "author": "Gang of Four",
+      "genre": "Technical",
+      "year": 1994,
+      "isAvailable": true
+    },
+    {
+      "id": 11,
+      "title": "Elden Ring Lore",
+      "author": "Guapo",
+      "genre": "General",
+      "year": 2026,
+      "isAvailable": true
+    },
+    {
+      "id": 12,
+      "title": "Song of Ice&Fire",
+      "author": "George R.R Martin",
+      "genre": "General",
+      "year": 2026,
+      "isAvailable": false
+    },
+    {
+      "id": 13,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "General",
+      "year": 2026,
+      "isAvailable": true
+    },
+    {
+      "id": 14,
+      "title": "Dr.Stone",
+      "author": "Senku",
+      "genre": "General",
+      "year": 2026,
+      "isAvailable": true,
+      "price": 19.99
+    }
+  ],
+  "members": [
+    {
+      "id": 1,
+      "name": "Rajesh Kumar",
+      "email": "rajesh@nexus.com",
+      "joinDate": "2023-01-15T00:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "name": "Priya Sharma",
+      "email": "priya@nexus.com",
+      "joinDate": "2023-03-22T00:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "name": "Amit Singh",
+      "email": "amit@nexus.com",
+      "joinDate": "2024-01-10T00:00:00.000Z",
+      "isActive": false
+    },
+    {
+      "id": 4,
+      "name": "Sneha Reddy",
+      "email": "sneha@nexus.com",
+      "joinDate": "2022-11-05T00:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": 5,
+      "name": "Vikram Gupta",
+      "email": "vikram@nexus.com",
+      "joinDate": "2024-01-20T00:00:00.000Z",
+      "isActive": true
+    },
+    {
+      "id": 6,
+      "name": "Raj",
+      "email": "raj@nexus.com",
+      "joinDate": "2026-03-08T10:01:26.255Z",
+      "isActive": true
+    },
+    {
+      "id": 7,
+      "name": "Karthik",
+      "email": "karthik@nexus.com",
+      "joinDate": "2026-03-08T14:07:31.324Z",
+      "isActive": true
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "bookId": 3,
+      "memberId": 1,
+      "borrowDate": "2024-02-01T10:00:00.000Z",
+      "status": "borrowed"
+    },
+    {
+      "id": 2,
+      "bookId": 9,
+      "memberId": 2,
+      "borrowDate": "2024-02-15T14:30:00.000Z",
+      "status": "borrowed"
+    },
+    {
+      "bookId": 1,
+      "memberId": 6,
+      "borrowDate": "2026-03-08T10:12:37.131Z",
+      "status": "borrowed",
+      "id": 3
+    },
+    {
+      "bookId": 6,
+      "memberId": 0,
+      "borrowDate": "2026-03-08T10:17:24.327Z",
+      "returnDate": "2026-03-08T10:17:24.327Z",
+      "status": "returned",
+      "id": 4
+    },
+    {
+      "bookId": 2,
+      "memberId": 4,
+      "borrowDate": "2026-03-08T10:18:08.020Z",
+      "status": "borrowed",
+      "id": 5
+    },
+    {
+      "bookId": 12,
+      "memberId": 7,
+      "borrowDate": "2026-03-08T14:07:51.251Z",
+      "status": "borrowed",
+      "id": 6
+    },
+    {
+      "bookId": 9,
+      "memberId": 0,
+      "borrowDate": "2026-03-08T14:08:09.387Z",
+      "returnDate": "2026-03-08T14:08:09.387Z",
+      "status": "returned",
+      "id": 7
+    },
+    {
+      "bookId": 4,
+      "memberId": 3,
+      "borrowDate": "2026-03-08T14:17:22.218Z",
+      "status": "borrowed",
+      "id": 8
+    },
+    {
+      "bookId": 6,
+      "memberId": 3,
+      "borrowDate": "2026-03-08T14:17:33.345Z",
+      "status": "borrowed",
+      "id": 9
+    },
+    {
+      "bookId": 8,
+      "memberId": 5,
+      "borrowDate": "2026-03-08T14:58:54.409Z",
+      "status": "borrowed",
+      "id": 10
+    },
+    {
+      "bookId": 1,
+      "memberId": 0,
+      "borrowDate": "2026-03-08T14:59:02.593Z",
+      "returnDate": "2026-03-08T14:59:02.593Z",
+      "status": "returned",
+      "id": 11
+    },
+    {
+      "bookId": 6,
+      "memberId": 0,
+      "borrowDate": "2026-03-08T14:59:05.185Z",
+      "returnDate": "2026-03-08T14:59:05.185Z",
+      "status": "returned",
+      "id": 12
+    },
+    {
+      "bookId": 8,
+      "memberId": 0,
+      "borrowDate": "2026-03-08T15:03:53.075Z",
+      "returnDate": "2026-03-08T15:03:53.075Z",
+      "status": "returned",
+      "id": 13
+    }
+  ]
+}

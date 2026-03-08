@@ -1,1 +1,53 @@
-<p>book-detail works!</p>
+<div class="detail-container fade-in" *ngIf="book">
+  <mat-card class="book-detail-card">
+    <div class="book-header">
+      <div>
+        <h1 class="book-title">{{ book.title | uppercase }}</h1>
+        <p class="book-author">By {{ book.author }}</p>
+      </div>
+      <mat-icon style="font-size: 48px; width: 48px; height: 48px; color: var(--royal-gold);">auto_stories</mat-icon>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="book-meta">
+      <div class="meta-item">
+        <span class="meta-label">ID Number</span>
+        <span class="meta-value">ARCH-{{ book.id }}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Genre</span>
+        <span class="meta-value">{{ book.genre || 'General' }}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Year Published</span>
+        <span class="meta-value">{{ book.year || 'Unknown' }}</span>
+      </div>
+    </div>
+
+
+    <div class="status-section">
+      <p class="status-label">Archival Status</p>
+      <div class="status-indicator" [ngClass]="book.isAvailable ? 'available' : 'borrowed'">
+        <mat-icon style="vertical-align: middle;">{{ book.isAvailable ? 'check_circle' : 'lock' }}</mat-icon>
+        {{ book.isAvailable ? 'Available for Requisition' : 'Currently in Circulation' }}
+      </div>
+    </div>
+
+    <div class="actions">
+      <button mat-stroked-button class="back-button" (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon> Return to Archive
+      </button>
+      <button mat-raised-button class="gold-button" [routerLink]="['/borrow']" *ngIf="book.isAvailable">
+        <mat-icon>bookmark_add</mat-icon> Claim this Tome
+      </button>
+    </div>
+  </mat-card>
+</div>
+
+<div class="detail-container fade-in" *ngIf="!book" style="text-align: center;">
+  <mat-card class="book-detail-card">
+    <p>Searching the archives for the requested tome...</p>
+    <mat-spinner style="margin: 20px auto;"></mat-spinner>
+  </mat-card>
+</div>

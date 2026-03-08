@@ -1,4 +1,4 @@
-.borrow-container {
+.members-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 60px 20px;
@@ -13,7 +13,7 @@
   padding-bottom: 2rem;
 }
 
-.borrow-card {
+.add-member-card {
   background: var(--royal-parchment);
   border: 3px double var(--royal-gold);
   border-radius: 8px;
@@ -21,18 +21,19 @@
   box-shadow: 0 10px 40px rgba(0,0,0,0.6);
 }
 
-.input-row {
+.add-member-card mat-card-title {
+  font-family: 'Cinzel', serif;
+  color: var(--royal-burgundy);
+  font-weight: bold;
+}
+
+.form-row {
   display: flex;
   gap: 40px;
   align-items: baseline;
   flex-wrap: wrap;
 }
 
-.borrow-card mat-card-title {
-  font-family: 'Cinzel', serif;
-  color: var(--royal-burgundy);
-  font-weight: bold;
-}
 
 .full-width {
   width: 100%;
@@ -61,7 +62,26 @@
   font-size: 1.1rem;
 }
 
-.mat-column-action {
-  text-align: right;
-  padding-right: 20px !important;
+.status-text {
+  font-weight: bold;
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
 }
+
+.active-status {
+  color: #2D5A27;
+}
+
+.inactive-status {
+  color: #8B0000;
+  font-style: italic;
+}
+
+.royal-paginator {
+  background: var(--royal-parchment) !important;
+  color: var(--royal-burgundy) !important;
+  font-family: 'Cinzel', serif;
+  border-top: 2px solid var(--royal-gold);
+}
+

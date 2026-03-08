@@ -1,59 +1,108 @@
-# LibraryManagementAngular
+# The King's Archive: Library Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.10.
+A majestic, high-performance Library Management System built with Angular 17+ and TypeScript, featuring a luxurious "Royal Vibe" aesthetic inspired by a King's Library.
 
-## Development server
+## 🏰 Features
 
-To start a local development server, run:
+- **Royal Archive Inventory**: Browse available tomes with advanced filtering and pagination.
+- **Detailed Scrutiny**: View individual book details with archival value (pricing) and circulation status.
+- **Royal Requisitions**: Requisition books using Reactive Forms with validation.
+- **Guild of Members**: Manage library records and membership enlistment.
+- **Archival Security**: Guarded routes ensuring only authorized members can claim or restore tomes.
+- **Responsive Gilding**: A mobile-optimized interface with parchment textures, gold accents, and smooth cinematic transitions.
 
-```bash
-ng serve
+## 🛠️ Technology Stack
+
+- **Framework**: Angular (Latest)
+- **Language**: TypeScript
+- **Styling**: Vanilla CSS with Royal Color Tokens & Google Fonts (Cinzel, Playfair Display)
+- **UI Components**: Angular Material (MatTable, MatCard, MatPaginator, MatSnackBar, etc.)
+- **Data Source**: Mock JSON Server
+
+## 📜 Setup Guide
+
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Start Mock Server**:
+   ```bash
+   npm run server
+   ```
+
+3. **Launch the Archive**:
+   ```bash
+   ng serve
+   ```
+   *The archive will be accessible at `http://localhost:4200`.*
+
+## 📐 Architecture
+
+- **Standalone Components**: Modular and efficient architecture.
+- **Global Interceptors**: Robust HTTP error handling and loading feedback.
+- **Reactive State**: Using Observables for seamless data flow.
+- **Custom Directives**: Highlights overdue tomes with archival significance.
+- **Custom Pipes**: Sophisticated categorical filtering across Titles, Authors, Genres, and Availability.
+
+### System Diagram
+
+```mermaid
+graph TD
+    %% Core System
+    Client[Browser Client]
+    Router[Angular Router]
+    
+    %% Components
+    Nav[Navbar Component]
+    Inv[Inventory Component]
+    Det[Detail Component]
+    Req[Borrow Component]
+    Ret[Return Component]
+    Mem[Members Component]
+
+    %% Guards & Services
+    AuthGuard{AuthGuard}
+    AuthSvc(AuthService)
+    BookSvc(BookService)
+    MemSvc(MemberService)
+    NotifSvc(NotificationService)
+    
+    %% Pipes & Directives
+    CustomPipes[Book/Author/Genre/Status Pipes]
+    Dir[HighlightOverdue Directive]
+
+    %% External
+    JSON[Mock JSON DB Server]
+    
+    %% Connections
+    Client --> Router
+    Router --> Nav
+    Router --> Inv
+    Router --> Det
+    Router -- Secured by --> AuthGuard
+    AuthGuard -- Checks --> AuthSvc
+    AuthGuard --> Req
+    AuthGuard --> Ret
+    Router --> Mem
+
+    Inv --> CustomPipes
+    Req --> CustomPipes
+    Inv --> Dir
+    
+    Inv <--> BookSvc
+    Det <--> BookSvc
+    Req <--> BookSvc
+    Ret <--> BookSvc
+    
+    Mem <--> MemSvc
+    
+    BookSvc <--> JSON
+    MemSvc <--> JSON
+    
+    BookSvc --> NotifSvc
+    MemSvc --> NotifSvc
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+*Created for the Royal Archive Restoration Project.*

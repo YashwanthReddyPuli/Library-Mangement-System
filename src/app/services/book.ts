@@ -1,36 +1,61 @@
 import { Injectable } from '@angular/core';
-import { Book } from '../library.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable, switchMap, map } from 'rxjs';
+import { Book, Transaction } from '../library.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  private books: Book[] = [
-    { id: 1, title: 'GTA V Lore', author: 'Rockstar', genre: 'Gaming', year: 2013, isAvailable: true },
-    { id: 2, title: 'Angular Basics', author: 'Google', genre: 'Technical', year: 2024, isAvailable: true },
-    { id: 3, title: 'Data Science', author: 'Yashwanth', genre: 'Education', year: 2025, isAvailable: false },
-    { id: 4, title: 'The Hobbit', author: 'J.R.R. Tolkien', genre: 'Fantasy', year: 1937, isAvailable: true },
-    { id: 5, title: 'Clean Code', author: 'Robert Martin', genre: 'Technical', year: 2008, isAvailable: true },
-    { id: 6, title: 'Cyberpunk 2077', author: 'CD Projekt', genre: 'Gaming', year: 2020, isAvailable: true },
-    { id: 7, title: 'Python Mastery', author: 'Guido Rossum', genre: 'Technical', year: 1991, isAvailable: false },
-    { id: 8, title: 'The Alchemist', author: 'Paulo Coelho', genre: 'Fiction', year: 1988, isAvailable: true },
-    { id: 9, title: 'Atomic Habits', author: 'James Clear', genre: 'Self-Help', year: 2018, isAvailable: true },
-    { id: 10, title: 'Deep Learning', author: 'Ian Goodfellow', genre: 'AI', year: 2016, isAvailable: true }
-  ];
+  private apiUrl = 'http://localhost:3000/books';
+  private transactionsUrl = 'http://localhost:3000/transactions';
 
-  getBooks() { return this.books; }
+  constructor(private http: HttpClient) {}
 
-  addBook(newBook: Book) {
-    this.books.push(newBook);
+  getBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(this.apiUrl);
   }
 
-  borrowBook(id: number) {
-    const book = this.books.find(b => b.id === id);
-    if (book) book.isAvailable = false;
+  getBook(id: number): Observable<Book> {
+    return this.http.get<Book>(`${this.apiUrl}/${id}`);
   }
 
-  returnBook(id: number) {
-    const book = this.books.find(b => b.id === id);
-    if (book) book.isAvailable = true;
+  addBook(newBook: Book): Observable<Book> {
+    return this.http.post<Book>(this.apiUrl, newBook);
+  }
+
+  borrowBook(bookId: number, memberId: number, book: Book): Observable<any> {
+    const updatedBook = { ...book, isAvailable: false };
+    
+    // First update the book to not available, then create a new transaction record
+    return this.http.put<Book>(`${this.apiUrl}/${bookId}`, updatedBook).pipe(
+      switchMap(() => {
+        const transaction: Partial<Transaction> = {
+          bookId,
+          memberId,
+          borrowDate: new Date(),
+          status: 'borrowed'
+        };
+        return this.http.post<Transaction>(this.transactionsUrl, transaction);
+      })
+    );
+  }
+
+  returnBook(bookId: number, book: Book): Observable<any> {
+    const updatedBook = { ...book, isAvailable: true };
+    
+    return this.http.put<Book>(`${this.apiUrl}/${bookId}`, updatedBook).pipe(
+      switchMap(() => {
+        // Optional: Could fetch open transaction and PUT 'returned', but POSTing a new closed event is safer without direct ID reference.
+        const transaction: Partial<Transaction> = {
+          bookId,
+          memberId: 0, // Unassigned or derived if logged in
+          borrowDate: new Date(),
+          returnDate: new Date(),
+          status: 'returned'
+        };
+        return this.http.post<Transaction>(this.transactionsUrl, transaction);
+      })
+    );
   }
 }

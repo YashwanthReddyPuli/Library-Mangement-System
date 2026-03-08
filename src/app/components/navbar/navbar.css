@@ -1,8 +1,8 @@
 .top-nav {
-  background-color: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 0.75rem 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: var(--royal-burgundy);
+  border-bottom: 3px solid var(--royal-gold);
+  padding: 0.5rem 2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -22,56 +22,105 @@
   gap: 12px;
 }
 
-.brand-logo {
-  background-color: #2563eb;
-  color: white;
-  width: 32px;
-  height: 32px;
+.regal-logo {
+  position: relative;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
-  font-weight: bold;
+  color: var(--royal-gold);
 }
 
-.brand h1 {
-  font-size: 1.125rem;
-  color: #111827;
+.shield-icon {
+  font-size: 45px !important;
+  width: 45px !important;
+  height: 45px !important;
+  position: absolute;
+  color: var(--royal-gold);
+}
+
+.crown-icon {
+  font-size: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  position: absolute;
+  top: 12px;
+  color: var(--royal-burgundy);
+  z-index: 2;
+}
+
+.royal-title {
+  font-size: 1.8rem;
+  color: var(--royal-gold) !important;
   font-weight: 700;
   margin: 0;
+  font-family: 'Cinzel', serif;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
+
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 40px;
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.student-group {
+  border-left: 1px solid rgba(212, 175, 55, 0.3);
+  padding-left: 15px;
 }
 
 .nav-item {
-  color: #6b7280;
+  color: var(--royal-gold);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-weight: bold;
+  font-size: 0.9rem;
   cursor: pointer;
-  padding: 8px 4px;
-  transition: color 0.2s;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+  font-family: 'Cinzel', serif;
+  opacity: 0.7;
 }
 
 .nav-item.active {
-  color: #2563eb;
-  border-bottom: 2px solid #2563eb;
+  color: #fff;
+  background: rgba(212, 175, 55, 0.2);
+  border-radius: 4px;
+  opacity: 1;
+  text-shadow: 0 0 5px var(--royal-gold);
 }
 
 .nav-item:hover {
-  color: #111827;
+  opacity: 1;
+  background: rgba(212, 175, 55, 0.1);
 }
 
 .admin-badge {
-  background-color: #f3f4f6;
-  color: #374151;
-  padding: 4px 10px;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  background: var(--royal-gold-dark);
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
 }
+
+.admin-badge.student {
+  background: #2D5A27;
+  color: #fff;
+}
+
+
+

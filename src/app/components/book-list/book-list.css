@@ -1,0 +1,153 @@
+.inventory-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.header-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 5rem;
+  border-bottom: 2px solid var(--royal-gold);
+  padding-bottom: 2rem;
+}
+
+.add-book-card {
+  background: var(--royal-parchment);
+  border: 3px double var(--royal-gold);
+  border-radius: 8px;
+  margin-bottom: 5rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.form-row {
+  display: flex;
+  gap: 40px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.add-book-card mat-card-title {
+  font-family: 'Cinzel', serif;
+  color: var(--royal-burgundy);
+  font-weight: bold;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  --mdc-outlined-idle-outline-color: var(--royal-gold-dark);
+  --mdc-outlined-hover-outline-color: var(--royal-gold);
+  --mdc-outlined-focused-outline-color: var(--royal-gold);
+}
+
+.mat-mdc-table {
+  background: var(--royal-parchment) !important;
+  border: 2px solid var(--royal-wood-light);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mat-mdc-header-row {
+  background: var(--royal-burgundy) !important;
+}
+
+.mat-mdc-header-cell {
+  color: var(--royal-gold) !important;
+  font-family: 'Cinzel', serif !important;
+  font-weight: bold !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mat-mdc-row:nth-child(even) {
+  background-color: rgba(44, 30, 20, 0.05);
+}
+
+.mat-mdc-cell {
+  color: var(--royal-wood) !important;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  border-bottom: 1px solid rgba(44, 30, 20, 0.1);
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Cinzel', serif;
+}
+
+.status-badge.available {
+  background: #2D5A27;
+  color: #fff;
+}
+
+.status-badge.borrowed {
+  background: #8B0000;
+  color: #fff;
+}
+
+.overdue-row {
+  background-color: rgba(139, 0, 0, 0.1) !important;
+}
+
+.royal-paginator {
+  background: var(--royal-parchment) !important;
+  color: var(--royal-burgundy) !important;
+  font-family: 'Cinzel', serif;
+  border-top: 2px solid var(--royal-gold);
+}
+
+::ng-container .mat-mdc-paginator-range-label {
+  font-weight: bold;
+}
+
+.filters-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--royal-parchment);
+  padding: 20px;
+  border-radius: 8px;
+  border: 4px double var(--royal-gold);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.filter-field {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: -1.25em; /* Compensate for material form field bottom padding */
+}
+
+.status-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.filter-label {
+  font-family: 'Cinzel', serif;
+  color: var(--royal-gold-dark);
+  font-weight: bold;
+}
+
+.status-filters button {
+  font-family: 'Cinzel', serif;
+  color: var(--royal-wood);
+  border: 1px solid transparent;
+}
+
+.active-filter {
+  background: rgba(212, 175, 55, 0.2) !important;
+  border: 1px solid var(--royal-gold) !important;
+  font-weight: bold;
+}

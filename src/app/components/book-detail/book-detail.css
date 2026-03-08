@@ -1,0 +1,99 @@
+.detail-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.book-detail-card {
+  background: var(--royal-parchment);
+  border: 4px double var(--royal-gold);
+  border-radius: 8px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+  overflow: hidden;
+  padding: 40px;
+}
+
+.book-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.book-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  color: var(--royal-burgundy);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.book-author {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--royal-wood-light);
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.book-meta {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+  font-family: 'Cinzel', serif;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  color: var(--royal-gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.meta-value {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--royal-wood);
+}
+
+.status-section {
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(44, 30, 20, 0.05);
+  border-radius: 4px;
+  border-left: 4px solid var(--royal-gold);
+}
+
+.status-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: var(--royal-wood-light);
+  margin-bottom: 5px;
+}
+
+.status-indicator {
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.available { color: #2D5A27; }
+.borrowed { color: #8B0000; }
+
+.actions {
+  margin-top: 50px;
+  display: flex;
+  gap: 20px;
+}
+
+.back-button {
+  border: 1px solid var(--royal-gold-dark) !important;
+  color: var(--royal-wood) !important;
+  font-family: 'Cinzel', serif !important;
+}
