@@ -94,6 +94,105 @@ graph TD
 
 ---
 
+## 🧩 Angular Code Explanations
+The application leverages advanced Angular features to deliver a robust and seamless experience. Below are some of the key implementations:
+
+### 1. Custom Directives (`appHighlightOverdue`)
+Directives are used to manipulate the DOM dynamically. The `HighlightOverdue` directive highlights overdue transactions or books.
+
+```typescript
+@Directive({
+  selector: '[appHighlightOverdue]',
+  standalone: true
+})
+export class HighlightOverdue implements OnChanges {
+  @Input('appHighlightOverdue') isOverdue: boolean = false;
+
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
+
+  ngOnChanges(): void {
+    if (this.isOverdue) {
+      this.renderer.setStyle(this.el.nativeElement, 'background-color', 'rgba(139, 0, 0, 0.08)');
+      this.renderer.setStyle(this.el.nativeElement, 'border-left', '5px solid var(--royal-gold)');
+    } else {
+      this.renderer.removeStyle(this.el.nativeElement, 'background-color');
+      this.renderer.removeStyle(this.el.nativeElement, 'border-left');
+    }
+  }
+}
+```
+**How it works**: By attaching `[appHighlightOverdue]="isOverdue"` to any HTML element, the directive automatically applies a dark red background and a gold border if the item is overdue (`isOverdue` is true). It securely manipulates styles using Angular's `Renderer2`.
+
+### 2. Route Guards (`AuthGuard`)
+Guards protect routes from unauthorized access. The `AuthGuard` ensures that only active members can access specific transactional features.
+
+```typescript
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
+
+  canActivate(): boolean {
+    const hasAccess = this.authService.isLoggedIn(); 
+
+    if (!hasAccess) {
+      alert("Access Denied: You must be an active member to perform this action.");
+      this.router.navigate(['/books']);
+      return false;
+    }
+    return true;
+  }
+}
+```
+**How it works**: Before resolving a route (like requesting or returning a book), the router triggers the `canActivate` method. If the user is not logged in, an alert is shown and they are safely redirected back to the `/books` page, returning `false` to block access.
+
+### 3. HTTP Interceptors (`GlobalInterceptor`)
+Interceptors catch and mutate HTTP requests and responses globally.
+
+```typescript
+@Injectable()
+export class GlobalInterceptor implements HttpInterceptor {
+  constructor(private notification: NotificationService) {}
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(req).pipe(
+      catchError((error: HttpErrorResponse) => {
+        let errorMessage = 'An unknown archival error occurred!';
+        if (error.error instanceof ErrorEvent) {
+           errorMessage = `Error: ${error.error.message}`;
+        } else {
+           errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        this.notification.error(errorMessage);
+        return throwError(() => new Error(errorMessage));
+      })
+    );
+  }
+}
+```
+**How it works**: `GlobalInterceptor` globally catches any failed HTTP calls using RxJS `catchError`. Whether the error is client-side or server-side, it parses a readable message, triggers the `NotificationService` to display a toast message to the user, and then rethrows the error for the relevant component to handle if necessary.
+
+### 4. Custom Pipes (Filtering)
+Pipes transform data directly within the HTML template.
+
+```typescript
+@Pipe({
+  name: 'authorFilter',
+  standalone: true
+})
+export class AuthorFilterPipe implements PipeTransform {
+  transform(books: Book[], authorName: string): Book[] {
+    if (!books || !authorName) return books;
+    const lowerTerm = authorName.toLowerCase();
+    return books.filter(b => b.author.toLowerCase().includes(lowerTerm));
+  }
+}
+```
+**How it works**: Used in the Angular template like `*ngFor="let book of books | authorFilter:authorSearchText"`, this pipe seamlessly filters an array of objects based on an input string without needing complex component logic.
+
+---
+
 ## 💻 Tech Stack
 | Category     | Technology          |
 |--------------|---------------------|
